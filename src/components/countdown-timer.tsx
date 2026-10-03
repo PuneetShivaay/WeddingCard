@@ -7,6 +7,7 @@ type TimeLeft = {
   hours: number;
   minutes: number;
   seconds: number;
+  isPast: boolean;
 } | null;
 
 const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
@@ -16,17 +17,18 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
-      const difference = targetTime - now;
-
-      if (difference <= 0) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
+      // Calculate difference from the target date to now (elapsed time)
+      const difference = now - targetTime;
+      
+      // Use absolute value to show the magnitude of time difference
+      const absDiff = Math.abs(difference);
 
       return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        days: Math.floor(absDiff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((absDiff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((absDiff / 1000 / 60) % 60),
+        seconds: Math.floor((absDiff / 1000) % 60),
+        isPast: difference >= 0
       };
     };
 
@@ -50,7 +52,6 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   );
 
   // Render a placeholder if timeLeft hasn't been calculated yet.
-  // This covers the server render and the initial client render before useEffect runs.
   if (timeLeft === null) {
     return (
       <div className="grid grid-cols-4 gap-2 md:gap-4 text-center auto-rows-max">
@@ -62,18 +63,17 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
     );
   }
 
-  const isFinished = Object.values(timeLeft).every(v => v === 0);
-
-  if (isFinished) {
-    return <div className="text-2xl font-headline text-accent">The big day is here!</div>;
-  }
-
   return (
-    <div className="grid grid-cols-4 gap-2 md:gap-4 text-center auto-rows-max">
-      {renderUnit(timeLeft.days, 'Days')}
-      {renderUnit(timeLeft.hours, 'Hours')}
-      {renderUnit(timeLeft.minutes, 'Minutes')}
-      {renderUnit(timeLeft.seconds, 'Seconds')}
+    <div className="flex flex-col items-center gap-4">
+      <div className="grid grid-cols-4 gap-2 md:gap-4 text-center auto-rows-max w-full">
+        {renderUnit(timeLeft.days, 'Days')}
+        {renderUnit(timeLeft.hours, 'Hours')}
+        {renderUnit(timeLeft.minutes, 'Minutes')}
+        {renderUnit(timeLeft.seconds, 'Seconds')}
+      </div>
+      <p className="text-sm font-body text-primary/60 italic">
+        {timeLeft.isPast ? "Time passed since the special day" : "Time remaining until the big day"}
+      </p>
     </div>
   );
 };
