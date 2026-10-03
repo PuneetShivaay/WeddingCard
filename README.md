@@ -1,4 +1,6 @@
 # Puneet & Ritu Wedding Invitation
+<img width="800" height="404" alt="Interactive Digital Wedding Invitation" src="https://github.com/user-attachments/assets/4aee8f8d-856d-4b74-a750-3d4982c26636" />
+
 
 **GitHub Description:** A beautiful, responsive, and interactive digital wedding invitation for Puneet and Ritu, built with Next.js 15, Tailwind CSS, and Shadcn UI.
 
