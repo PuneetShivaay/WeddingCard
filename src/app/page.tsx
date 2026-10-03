@@ -50,8 +50,6 @@ export default function Home() {
             </h1>
           </header>
 
-          <MusicPlayer />
-
           <FloralDivider className="mb-6" />
 
           <div className="mb-6">
@@ -68,6 +66,8 @@ export default function Home() {
           
           <CountdownTimer targetDate="2026-02-19T00:00:00" />
           
+          <MusicPlayer />
+
           <FloralDivider className="my-8" />
           
           <div className="mb-8">
