@@ -16,16 +16,16 @@ This document provides a technical overview of the Puneet & Ritu Wedding Invitat
 
 - `src/app/`: Contains the main page layout and routing logic.
 - `src/components/`: Reusable React components.
-  - `countdown-timer.tsx`: Handles the event counter logic with hydration safety.
+  - `countdown-timer.tsx`: Handles both countdown and elapsed time logic with hydration safety.
   - `floral-background.tsx`: Manages the dynamic SVG background pattern.
-  - `music-player.tsx`: Custom audio controls for background shehnai.
+  - `music-player.tsx`: Custom audio controls integrated into the main card flow.
 - `src/lib/`: Utility functions and static data (e.g., placeholder images).
 - `public/`: Static assets like images and audio files.
 
 ## 🛠️ Key Logic Patterns
 
 ### Hydration Safety
-To prevent Next.js hydration mismatch errors caused by browser-specific APIs (like `new Date()`) or dynamic content (like `Math.random()`), we use a client-side mounting pattern:
+To prevent Next.js hydration mismatch errors caused by browser-specific APIs (like `new Date()`) or dynamic content, we use a client-side mounting pattern:
 ```tsx
 const [isClient, setIsClient] = useState(false);
 useEffect(() => setIsClient(true), []);
@@ -33,4 +33,4 @@ if (!isClient) return <Placeholder />;
 ```
 
 ### Static Optimization
-The project is configured for **Static Site Export** (`output: 'export'` in `next.config.ts`), making it ideal for low-cost, high-performance hosting on platforms like Firebase.
+The project is configured for **Static Site Export** (`output: 'export'` in `next.config.ts`), making it ideal for low-cost, high-performance hosting on Firebase Hosting.
