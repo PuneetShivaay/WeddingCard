@@ -29,7 +29,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
       };
     };
 
-    // Initial calculation on mount
+    // Initial calculation on mount to avoid hydration mismatch
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {

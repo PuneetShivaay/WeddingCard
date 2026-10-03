@@ -1,4 +1,3 @@
-
 import CountdownTimer from '@/components/countdown-timer';
 import FloralBackground from '@/components/floral-background';
 import MusicPlayer from '@/components/music-player';
@@ -22,7 +21,6 @@ const FloralDivider = ({ className }: { className?: string }) => (
     <path d="M94.2069 15.0001L96.6339 10.6699L100 7.5L103.366 10.6699L105.793 15L103.366 19.3302L100 22.5L96.6339 19.3302L94.2069 15.0001Z" fill="currentColor" stroke="currentColor" strokeWidth="1"/>
   </svg>
 );
-
 
 export default function Home() {
   const ganeshaImage = PlaceHolderImages.find(p => p.id === 'ganesha-icon');
@@ -72,14 +70,14 @@ export default function Home() {
           <FloralDivider className="my-8" />
           
           <div className="mb-8">
-            <h3 className="font-headline text-3xl md:text-4xl text-primary mb-4">Haldi & Mehandi</h3>
-             <p className="font-headline font-bold text-2xl md:text-3xl mt-2">
+            <h3 className="font-headline text-3xl md:text-4xl text-primary mb-2">Haldi & Mehandi</h3>
+             <p className="font-headline font-bold text-xl md:text-2xl text-accent">
               Wednesday, 18th February 2026
             </p>
-            <p className="font-body text-lg mt-4">
+            <p className="font-body text-base md:text-lg mt-4 max-w-md mx-auto">
              {haldiMehandiLocation}
             </p>
-            <Button asChild variant="outline" size="sm" className="mt-4">
+            <Button asChild variant="outline" size="sm" className="mt-4 rounded-full border-accent/50 hover:bg-accent/10">
               <a href="https://maps.app.goo.gl/zUTYgthRXMbSTQus5" target="_blank" rel="noopener noreferrer">
                 <MapPin className="mr-2 h-4 w-4" /> View on Map
               </a>
@@ -88,15 +86,15 @@ export default function Home() {
 
           <FloralDivider className="my-8" />
           
-           <div className="mb-4">
-            <h3 className="font-headline text-3xl md:text-4xl text-primary mb-4">Wedding</h3>
-             <p className="font-headline font-bold text-2xl md:text-3xl mt-2">
+           <div className="mb-8">
+            <h3 className="font-headline text-3xl md:text-4xl text-primary mb-2">Wedding</h3>
+             <p className="font-headline font-bold text-xl md:text-2xl text-accent">
               Thursday, 19th February 2026
             </p>
-            <p className="font-body text-lg mt-4">
+            <p className="font-body text-base md:text-lg mt-4 max-w-md mx-auto">
              {weddingLocation}
             </p>
-             <Button asChild variant="outline" size="sm" className="mt-4">
+             <Button asChild variant="outline" size="sm" className="mt-4 rounded-full border-accent/50 hover:bg-accent/10">
               <a href="https://maps.app.goo.gl/c7hC68c8ub6d3kzD7" target="_blank" rel="noopener noreferrer">
                 <MapPin className="mr-2 h-4 w-4" /> View on Map
               </a>
@@ -106,14 +104,14 @@ export default function Home() {
           <FloralDivider className="my-8" />
 
           <div className="mb-8">
-            <h3 className="font-headline text-3xl md:text-4xl text-primary mb-4">Reception</h3>
-             <p className="font-headline font-bold text-2xl md:text-3xl mt-2">
+            <h3 className="font-headline text-3xl md:text-4xl text-primary mb-2">Reception</h3>
+             <p className="font-headline font-bold text-xl md:text-2xl text-accent">
               Saturday, 21st February 2026
             </p>
-            <p className="font-body text-lg mt-4">
+            <p className="font-body text-base md:text-lg mt-4 max-w-md mx-auto">
              {receptionLocation}
             </p>
-            <Button asChild variant="outline" size="sm" className="mt-4">
+            <Button asChild variant="outline" size="sm" className="mt-4 rounded-full border-accent/50 hover:bg-accent/10">
               <a href="https://maps.app.goo.gl/hN9d7WEwCigAm68LA" target="_blank" rel="noopener noreferrer">
                 <MapPin className="mr-2 h-4 w-4" /> View on Map
               </a>
