@@ -32,10 +32,9 @@ export default function Home() {
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
       <FloralBackground />
-      <MusicPlayer />
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 text-center text-primary animate-fade-in">
         <div className="bg-background/80 backdrop-blur-sm p-6 md:p-12 rounded-3xl shadow-2xl max-w-2xl w-full border border-accent/20">
-          <header className="mb-6 flex flex-col items-center">
+          <header className="mb-4 flex flex-col items-center">
             {ganeshaImage && (
               <img
                 src={ganeshaImage.imageUrl}
@@ -50,6 +49,8 @@ export default function Home() {
               || श्री गणेशाय नमः ||
             </h1>
           </header>
+
+          <MusicPlayer />
 
           <FloralDivider className="mb-6" />
 
