@@ -2,29 +2,44 @@
 
 This guide provides instructions for deploying the wedding invitation to Firebase Hosting.
 
-## 🚀 Deployment Steps
+## 🚀 Quick Deploy (Terminal)
 
-### 1. Build the Application
-Ensure you have the latest static files generated:
+Run these commands in order from the root of your project:
+
 ```bash
+# 1. Generate the static site (creates the 'out' folder)
 npm run build
-```
-*Output will be generated in the `out/` directory.*
 
-### 2. Firebase Setup
-Ensure you are logged in and using the correct project:
-```bash
+# 2. Authenticate with Firebase
 firebase login
-firebase use puneetritu
-```
 
-### 3. Deploy
-Upload the `out/` folder contents:
-```bash
+# 3. Select your project
+firebase use puneetritu
+
+# 4. Upload to Firebase Hosting
 firebase deploy --only hosting
 ```
 
+## 🛠️ Detailed Steps
+
+### 1. Build the Application
+This project uses Next.js **Static Site Export**. The `npm run build` command compiles your React code into standard HTML/CSS/JS files located in the `out/` directory.
+
+### 2. Firebase Configuration
+The `firebase.json` file is already configured to point to the `out/` directory:
+```json
+{
+  "hosting": {
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
+```
+
+### 3. Verification
+Once the deployment is complete, the CLI will provide a "Hosting URL" (e.g., `https://puneetritu.web.app`). Visit this link to see your live site.
+
 ## ⚠️ Important Notes
-- **Static Export:** The site uses `next export`. Do not use server-side features like `getServerSideProps`.
-- **Image Optimization:** Since this is a static export, `next/image` is used with `unoptimized: true` in `next.config.ts`.
-- **Public Folder:** Ensure audio files like `shehnai.mp3` are present in the `public/` directory before building.
+- **Static Export:** The site uses `next export`. Do not use server-side features like `getServerSideProps` or dynamic API routes that require a Node.js server.
+- **Image Optimization:** Since this is a static export, `next/image` is configured with `unoptimized: true` in `next.config.ts`.
+- **Assets:** Ensure all audio and image files are in the `public/` directory before building.
