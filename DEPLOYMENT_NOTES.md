@@ -1,52 +1,55 @@
-# How to Deploy This Website
+# Deployment Guide: Puneet & Ritu Wedding Invitation
 
-This file contains the instructions for deploying the wedding invitation website from your local terminal.
+This guide provides clear instructions for deploying your wedding invitation website to Firebase Hosting.
 
-## Prerequisites
+## 📋 Prerequisites
 
-1.  **Node.js and npm:** Make sure you have Node.js and npm installed on your computer.
-2.  **Firebase CLI:** You need the Firebase Command Line Interface (CLI) installed globally. If you don't have it, run this command in your terminal:
+Before you begin, ensure you have the following installed on your local machine:
+
+1.  **Node.js & npm:** Download and install from [nodejs.org](https://nodejs.org/).
+2.  **Firebase CLI:** Install it globally using npm:
     ```bash
     npm install -g firebase-tools
     ```
 
-## Deployment Steps
+## 🚀 Deployment Steps
 
-Follow these steps in your project's root directory every time you want to deploy updates.
+Follow these steps in your project's root directory:
 
-### 1. Log in to Firebase
-If you aren't already logged in, run:
+### 1. Authentication
+Log in to your Google account associated with Firebase:
 ```bash
 firebase login
 ```
-This will open a browser window for you to sign in to your Google account.
 
-### 2. Select Your Firebase Project
-Tell the Firebase CLI which project you want to deploy to. Your project ID is `puneetritu`.
+### 2. Initialize/Select Project
+Set the active project for this directory (Your project ID is `puneetritu`):
 ```bash
 firebase use puneetritu
 ```
 
-### 3. Build Your Website
-This command compiles your Next.js application into a set of static files in a folder named `out`. **You must run this command before every deployment.**
+### 3. Build the Application
+This project is configured for **Static Site Export**. You must generate the static HTML/CSS/JS files before deploying:
 ```bash
 npm run build
 ```
+*This command creates an `out/` directory containing the final website files.*
 
-### 4. Deploy to Firebase Hosting
-This command uploads the built files (from the `out` folder) to your live website.
+### 4. Deploy to Firebase
+Upload the contents of the `out/` folder to Firebase Hosting:
 ```bash
 firebase deploy --only hosting
 ```
 
-After the command finishes, your latest changes will be live at `https://puneetritu.web.app/`.
+Once finished, your site will be live at:
+**[https://puneetritu.web.app/](https://puneetritu.web.app/)**
 
 ---
 
-## Troubleshooting
+## 🛠️ Troubleshooting & Common Issues
 
-### Error: "Could not determine the web framework in use"
-This error happens if your `firebase.json` is not configured correctly for a static site deployment. Ensure the `hosting` section looks like this:
+### "Could not determine the web framework in use"
+This occurs if the Firebase CLI doesn't recognize the project structure. Ensure your `firebase.json` explicitly points to the `out` directory:
 ```json
 {
   "hosting": {
@@ -59,10 +62,15 @@ This error happens if your `firebase.json` is not configured correctly for a sta
   }
 }
 ```
-The key is `"public": "out"`. If it says `"source": "out"`, you will get this error.
 
-### Error: "Build failed" or "Internal Server Error" during `npm run build`
-This often indicates that some code is trying to use browser-only APIs (like `window` or `document`) during the server-side build process.
+### Hydration Mismatch Errors
+If the build fails or the site looks broken after deployment:
+1.  **Check Dynamic Data:** Ensure any code using `new Date()` or `Math.random()` is wrapped in a `useEffect` hook.
+2.  **Browser APIs:** Do not use `window` or `document` outside of `useEffect`.
+3.  **Static Export:** The `next.config.ts` must have `output: 'export'` for Firebase Hosting to work without a custom server.
 
-- **Check your components:** Look for any component that might be using these APIs.
-- **Use `useEffect`:** The safest way to fix this is to wrap the browser-specific code in a `useEffect` hook with an empty dependency array (`[]`). This ensures the code only runs on the client-side after the component has mounted.
+### Local Preview
+To test exactly what will be deployed, you can use the Firebase emulator:
+```bash
+firebase serve --only hosting
+```
