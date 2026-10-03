@@ -8,19 +8,16 @@ type TimeLeft = {
   minutes: number;
   seconds: number;
   isPast: boolean;
-} | null;
+};
 
 const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   const targetTime = useMemo(() => new Date(targetDate).getTime(), [targetDate]);
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(null);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
-      // Calculate difference from the target date to now (elapsed time)
       const difference = now - targetTime;
-      
-      // Use absolute value to show the magnitude of time difference
       const absDiff = Math.abs(difference);
 
       return {
@@ -32,7 +29,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
       };
     };
 
-    // Set initial time and then start the interval
+    // Initial calculation on mount
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {
@@ -43,37 +40,27 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   }, [targetTime]);
 
   const renderUnit = (value: number | undefined, label: string) => (
-    <div className="flex flex-col items-center justify-center bg-accent/10 p-3 rounded-lg border border-accent/20">
-      <span className="text-3xl md:text-5xl font-headline font-bold text-primary">
+    <div className="flex flex-col items-center justify-center bg-accent/10 p-2 sm:p-4 rounded-xl border border-accent/20 min-w-[70px] md:min-w-[100px] shadow-inner">
+      <span className="text-2xl md:text-5xl font-headline font-bold text-primary tabular-nums">
         {value !== undefined ? String(value).padStart(2, '0') : '--'}
       </span>
-      <span className="text-xs md:text-sm font-body uppercase tracking-wider text-primary/80">{label}</span>
+      <span className="text-[10px] md:text-xs font-body uppercase tracking-widest text-primary/70 mt-1">{label}</span>
     </div>
   );
 
-  // Render a placeholder if timeLeft hasn't been calculated yet.
-  if (timeLeft === null) {
-    return (
-      <div className="grid grid-cols-4 gap-2 md:gap-4 text-center auto-rows-max">
-        {renderUnit(undefined, 'Days')}
-        {renderUnit(undefined, 'Hours')}
-        {renderUnit(undefined, 'Minutes')}
-        {renderUnit(undefined, 'Seconds')}
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="grid grid-cols-4 gap-2 md:gap-4 text-center auto-rows-max w-full">
-        {renderUnit(timeLeft.days, 'Days')}
-        {renderUnit(timeLeft.hours, 'Hours')}
-        {renderUnit(timeLeft.minutes, 'Minutes')}
-        {renderUnit(timeLeft.seconds, 'Seconds')}
+    <div className="flex flex-col items-center gap-6 w-full py-4">
+      <div className="flex flex-row justify-center gap-2 md:gap-4 w-full">
+        {renderUnit(timeLeft?.days, 'Days')}
+        {renderUnit(timeLeft?.hours, 'Hours')}
+        {renderUnit(timeLeft?.minutes, 'Minutes')}
+        {renderUnit(timeLeft?.seconds, 'Seconds')}
       </div>
-      <p className="text-sm font-body text-primary/60 italic">
-        {timeLeft.isPast ? "Time passed since the special day" : "Time remaining until the big day"}
-      </p>
+      {timeLeft && (
+        <p className="text-sm font-body text-primary/60 italic animate-pulse">
+          {timeLeft.isPast ? "Time passed since the special day" : "Time remaining until the big day"}
+        </p>
+      )}
     </div>
   );
 };
