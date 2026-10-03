@@ -1,4 +1,7 @@
 # Puneet & Ritu Wedding Invitation
+
+<img width="800" height="404" alt="Interactive Digital Wedding Invitation" src="https://github.com/user-attachments/assets/7679d321-7765-4452-a598-8ad9b190efe0" />
+
 <img width="800" height="404" alt="Interactive Digital Wedding Invitation" src="https://github.com/user-attachments/assets/4aee8f8d-856d-4b74-a750-3d4982c26636" />
 
 
