@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "ganesha-icon",
+      "description": "An image of Lord Ganesha for the wedding invitation header.",
+      "imageUrl": "/ganesh.png",
+      "imageHint": "Ganesha"
+    }
+  ]
+}
