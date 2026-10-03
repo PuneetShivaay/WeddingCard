@@ -1,11 +1,15 @@
 # Puneet & Ritu Wedding Invitation
 
-A beautiful, responsive, and interactive digital wedding invitation for Puneet and Ritu, built with modern web technologies.
+**GitHub Description:** A beautiful, responsive, and interactive digital wedding invitation for Puneet and Ritu, built with modern web technologies.
+
+**Tags:** `wedding-invitation`, `nextjs`, `react`, `tailwind-css`, `shadcn-ui`, `digital-invite`, `responsive-design`, `interactive-ui`, `firebase-hosting`
+
+---
 
 ## 🌟 Features
 
 - **Interactive UI:** Smooth animations and a floral-themed aesthetic.
-- **Countdown Timer:** Live countdown to the wedding day (19 February 2026).
+- **Event Counter:** Real-time counter showing time passed since (or time remaining until) the special day.
 - **Event Details:** Clear information for Haldi & Mehandi, Wedding, and Reception ceremonies.
 - **Location Integration:** Direct links to Google Maps for each venue.
 - **Background Music:** Ambient shehnai music with play/pause controls.
@@ -19,12 +23,12 @@ The application is built using the following technologies:
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) for utility-first styling.
 - **Components:** [Shadcn UI](https://ui.shadcn.com/) for accessible and high-quality UI components.
 - **Icons:** [Lucide React](https://lucide.dev/) for clean, consistent iconography.
-- **Fonts:** [Google Fonts](https://fonts.google.com/) (Playfair Display for headlines, PT Sans for body text).
+- **Fonts:** [Google Fonts](https://fonts.googleapis.com/) (Playfair Display for headlines, PT Sans for body text).
 
 ### Core Components
 
 - `src/app/page.tsx`: The main entry point and landing page.
-- `src/components/countdown-timer.tsx`: Handles the countdown logic and avoids hydration mismatches.
+- `src/components/countdown-timer.tsx`: Handles the event counter logic and ensures mobile responsiveness.
 - `src/components/floral-background.tsx`: Manages the dynamic SVG background pattern.
 - `src/components/music-player.tsx`: Controls the background audio experience.
 
@@ -62,7 +66,7 @@ This project is configured for static export to Firebase Hosting.
     firebase deploy --only hosting
     ```
 
-For detailed deployment steps, please refer to [DEPLOYMENT_NOTES.md](./DEPLOYMENT_NOTES.md).
+For detailed deployment steps and troubleshooting, please refer to [DEPLOYMENT_NOTES.md](./DEPLOYMENT_NOTES.md).
 
 ## 🛠️ Configuration
 
