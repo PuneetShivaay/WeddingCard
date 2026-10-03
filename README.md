@@ -1,75 +1,55 @@
 # Puneet & Ritu Wedding Invitation
 
-**GitHub Description:** A beautiful, responsive, and interactive digital wedding invitation for Puneet and Ritu, built with modern web technologies.
+**GitHub Description:** A beautiful, responsive, and interactive digital wedding invitation for Puneet and Ritu, built with Next.js 15, Tailwind CSS, and Shadcn UI.
 
 **Tags:** `wedding-invitation`, `nextjs`, `react`, `tailwind-css`, `shadcn-ui`, `digital-invite`, `responsive-design`, `interactive-ui`, `firebase-hosting`
 
 ---
 
-## 🌟 Features
+## 📖 Overview
 
-- **Interactive UI:** Smooth animations and a floral-themed aesthetic.
-- **Event Counter:** Real-time counter showing time passed since (or time remaining until) the special day.
-- **Event Details:** Clear information for Haldi & Mehandi, Wedding, and Reception ceremonies.
-- **Location Integration:** Direct links to Google Maps for each venue.
-- **Background Music:** Ambient shehnai music with play/pause controls.
-- **Responsive Design:** Optimized for mobile, tablet, and desktop viewing.
+This project is a modern digital wedding invitation designed to provide guests with a seamless and elegant experience. It features real-time event tracking, integrated maps for ceremony locations, and traditional background music.
 
-## 🏗️ Architecture & Tech Stack
+## 📂 Documentation
 
-The application is built using the following technologies:
+To understand the project better, please refer to the following guides in the `docs/` folder:
 
-- **Framework:** [Next.js 15 (App Router)](https://nextjs.org/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) for utility-first styling.
-- **Components:** [Shadcn UI](https://ui.shadcn.com/) for accessible and high-quality UI components.
-- **Icons:** [Lucide React](https://lucide.dev/) for clean, consistent iconography.
-- **Fonts:** [Google Fonts](https://fonts.googleapis.com/) (Playfair Display for headlines, PT Sans for body text).
+- [🏗️ Architecture](./docs/architecture.md) - Deep dive into the tech stack and file structure.
+- [✨ Features](./docs/features.md) - Detailed explanation of interactive components.
+- [🚀 Deployment](./docs/deployment.md) - Step-by-step instructions for Firebase Hosting.
 
-### Core Components
-
-- `src/app/page.tsx`: The main entry point and landing page.
-- `src/components/countdown-timer.tsx`: Handles the event counter logic and ensures mobile responsiveness.
-- `src/components/floral-background.tsx`: Manages the dynamic SVG background pattern.
-- `src/components/music-player.tsx`: Controls the background audio experience.
-
-## 🚀 Getting Started
+## 🏗️ Quick Start
 
 ### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18 or later recommended)
+- Node.js (v18 or later)
 - npm or yarn
 
 ### Local Development
+1. **Clone the repository.**
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:9002](http://localhost:9002) in your browser.
 
-1.  **Clone the repository.**
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-4.  Open [http://localhost:9002](http://localhost:9002) in your browser.
+## 📦 Static Export & Deployment
 
-## 📦 Deployment
+This project is optimized for static hosting.
+1. **Build:** `npm run build`
+2. **Deploy:** `firebase deploy --only hosting`
 
-This project is configured for static export to Firebase Hosting.
+Refer to [Deployment Guide](./docs/deployment.md) for more details.
 
-1.  **Build the project:**
-    ```bash
-    npm run build
-    ```
-    This command generates the static files in the `out/` directory.
-2.  **Deploy to Firebase:**
-    ```bash
-    firebase deploy --only hosting
-    ```
-
-For detailed deployment steps and troubleshooting, please refer to [DEPLOYMENT_NOTES.md](./DEPLOYMENT_NOTES.md).
+---
 
 ## 🛠️ Configuration
 
-- `next.config.ts`: Configures the static export and image optimization settings.
-- `tailwind.config.ts`: Defines custom theme colors, fonts, and animations.
-- `src/app/globals.css`: Contains CSS variables for the color palette.
+- `next.config.ts`: Configures static export settings.
+- `tailwind.config.ts`: Custom theme colors and typography.
+- `src/app/globals.css`: HSL color variables.
+
+With love, **Puneet & Ritu**
